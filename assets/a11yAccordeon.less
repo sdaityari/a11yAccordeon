@@ -1,4 +1,5 @@
 @borderColor: #206BA4;
+@borderColorLight: #5694C3;
 
 .a11yAccordeon-centralPos() {
   margin-left: auto;
@@ -11,9 +12,17 @@
   border-color: @borderColor;
   border-style: solid;
   border-width: 1px;
-  border-radius: 5px;
-  margin-top: 1em;
+  border-top: 0px;
   list-style-type: none;
+
+  &:first-of-type{
+    margin-top: 1em;
+    border-top: 1px solid @borderColor;
+  }
+
+  &:last-of-type{
+    border-top: 1px solid @borderColor;
+  }
 
   .a11yAccordeonItemHeader {
     padding: 1.5em;
