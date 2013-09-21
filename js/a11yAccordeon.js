@@ -88,13 +88,16 @@ var a11yAccordeon = function (options) {
     return false;
   });
 
+  container.show();
+
   // If search bar is required, text box and no results found div are added
   if (options.showSearch) {
     var searchPlaceholder = "Search",
         searchClass = "a11yAccordeonSearch",
         noResultsText = "No Results Found",
         titleText = "Type your query to search",
-        wrapperDiv, wrapperLi, searchInput, searchString;
+        borderTopClass = "borderTopClass",
+        wrapperDiv, wrapperLi, searchInput, searchString, visibleLis;
 
     wrapperDiv = $("<div />", {
       id: searchDiv
@@ -140,8 +143,14 @@ var a11yAccordeon = function (options) {
 
       updateTitleText(searchInput);
 
-      if (! $("." + accordeonItem + ":visible").length) {
+      visibleLis = $("." + accordeonItem + ":visible");
+
+      $("." + borderTopClass).removeClass(borderTopClass);
+
+      if (! visibleLis.length) {
         wrapperLi.show();
+      } else {
+        $(visibleLis[0]).addClass(borderTopClass);
       }
     });
   }
